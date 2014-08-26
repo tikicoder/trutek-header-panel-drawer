@@ -32,7 +32,8 @@
 	"core-toolbar": "Polymer/core-toolbar#>=0.3.0 <1.0.0",
 	"core-dropdown": "Polymer/core-dropdown#>=0.3.0 <1.0.0",
 	"core-input": "Polymer/core-input#>=0.3.0 <1.0.0",
-	"paper-icon-button": "Polymer/paper-icon-button#>=0.3.0 <1.0.0"
+	"paper-icon-button": "Polymer/paper-icon-button#>=0.3.0 <1.0.0",
+	"trutek-tri-drawer-panel": "tikicoder/trutek-tri-drawer-panel#>=0.3.0 <1.0.0"
   },
   "_release": "6f1d70ec2d",
   "_resolution": {
