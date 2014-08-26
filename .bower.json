@@ -6,6 +6,7 @@
       "email": "ron@trutekinnovations.com"
     }
   ],
+  "private":true,
   "description": "Expanded the core drawer panel to have 2 responsive points.",
   "main": "bower_components/trutek-header-panel-drawer/trutek-header-panel-drawer.html",
   "keywords": [
