@@ -1,0 +1,279 @@
+<!--
+Copyright (c) 2014 TruTek LLC Authors. All rights reserved.
+This code may only be used under the BSD style license included in the project.
+-->
+
+<link rel="import" href="../core-header-panel/core-header-panel.html">
+<link rel="import" href="../core-toolbar/core-toolbar.html">
+<link rel="import" href="../core-dropdown/core-dropdown.html">
+<link rel="import" href="../core-input/core-input.html">
+
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../trutek-tri-drawer-panel/trutek-tri-drawer-panel.html">
+
+<polymer-element name="trutek-header-panel-drawer" attributes="responsiveWidth responsiveWidthStep1 responsiveWidthStep2 mode">
+<template>
+
+  <style>
+    
+    :host {
+      display: block;
+    }
+    
+    [drawer] {
+      background-color: #fff;
+      box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
+    }
+    
+    [wrapper] {
+      height: 100%;
+      background-color: #000;
+    }
+	
+	[main] {
+      height: 100%;
+      background-color: #eee;
+    }
+    
+    core-toolbar {
+      background-color: #304ffe;
+      color: #fff;
+    }
+	
+	#siteSearch{
+		background-color:#ffffff;
+		color:#000000;
+		border-radius: 30px;
+		margin-left:-8px;
+	}
+	
+	#siteSearch::shadow core-icon{
+	height:15px;
+	width:15px;
+	}
+	
+	#siteSearchNarrow{
+		background-color:#ffffff;
+		color:#000000;
+		border-radius: 30px;
+		margin-left:-8px;
+		display:none;
+	}
+	
+	#siteSearchNarrow::shadow core-icon{
+	height:15px;
+	width:15px;
+	}
+	
+	#menuFilterSearch{
+		background-color:#ffffff;
+		color:#000000;
+		border-radius: 30px;
+	}
+	
+	#menuFilterSearch::shadow core-icon{
+	height:15px;
+	width:15px;
+	margin-top:6px;
+	}
+	
+	#menuFilterSearch::shadow span{
+		font-size: 0.4em;
+		display: block;
+		margin: -11px 0px 2px 0px;
+		padding-left: 7px;
+		padding-right: 7px;
+	}
+	
+	#divContainerNarrowSearch {
+		height:0px;
+		overflow:hidden;
+		position:absolute;top:0px;left:0px;background-color:#304ffe;width:100%;font-size:1.3em;padding-left:30px;
+		padding-top:0px;
+		transition: -webkit-transform ease-in-out 0.3s, height ease-in-out 0.3s;
+		transition: transform ease-in-out 0.3s, height ease-in-out 0.3s;
+	}
+
+	#searchInput{
+		background-color:#FFFFFF;
+		font-size:.6em;
+		padding-top:5px;
+		padding-bottom:5px;
+		padding-left:5px;
+		border-top-left-radius: 30px;
+		border-bottom-left-radius: 30px;
+		width:200px;
+		float:left;
+	}
+	
+	 #searchInputCategory {
+		background-color: #FFFFFF;
+		color:#cccccc;
+		font-size:.6em;
+		min-height: 6px;
+		margin-left: -6px;
+		border-left: solid 1px #Cccccc;
+		float:left;
+    }
+	#searchInputCategory::shadow div core-item {
+    min-height: 5px !important;
+}
+	
+	.searchInputCategoryItem.core-selected{
+		min-height: 5px;
+		padding-top:5px;
+		padding-bottom:5px;
+		padding-left:5px;
+	}
+	
+	.searchInputCategoryItem:not(.core-selected){
+		color:#CCCCCC;
+		min-height: 5px;
+		padding-top:5px;
+		padding-bottom:5px;
+	}
+	.searchInputCategoryItem:not(.core-selected):hover{
+		color:#333333;
+		cursor:pointer;
+	}
+    
+  </style>
+  
+  <core-media-query query="max-width: {{responsiveWidthStep2 }}" queryMatches="{{queryMatchesStep2}}"></core-media-query>
+
+   <core-header-panel wrapper mode="{{mode}}">
+		<core-toolbar>
+			<content select="[tool]"></content>
+			<paper-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></paper-icon-button>
+			<div id="divFullSearch" style="white-space:no-wrap;"><div style="float:left;padding-top:5px;"><core-input id="searchInput" placeholder="Enter City,State or Zip" type="search"></core-input>
+			<core-dropdown id="searchInputCategory" selected="Bars &amp; Clubs" valueattr="label">
+    <core-item label="Bars &amp; Clubs" class="searchInputCategoryItem"></core-item>
+    <core-item label="Happy Hour" class="searchInputCategoryItem"></core-item>
+    <core-item label="Drink Specials" class="searchInputCategoryItem"></core-item>
+    <core-item label="Ladies Nights" class="searchInputCategoryItem"></core-item>
+	<core-item label="Music &amp; Dance" class="searchInputCategoryItem"></core-item>
+	<core-item label="Wine &amp; Dine" class="searchInputCategoryItem"></core-item>
+	<core-item label="Adult Playgrounds" class="searchInputCategoryItem"></core-item>
+</core-dropdown>
+</div>
+			<paper-icon-button id="siteSearch" icon="search" on-tap="{{togglePanel}}" ></paper-icon-button>
+			</div>
+			<paper-icon-button id="siteSearchNarrow" data-toggle="off" icon="search" on-tap="{{toggleSearchPanel}}" ></paper-icon-button>
+			<paper-icon-button id="menuFilterSearch" icon="filter" on-tap="" label="Filter"></paper-icon-button>
+			
+			<content select="[userlogin]"></content>
+		</core-toolbar>
+      
+		<trutek-tri-drawer-panel id="drawerPanel" narrow="{{narrow}}"  responsiveWidth="{{responsiveWidth}}"  responsiveWidthStep1="{{responsiveWidthStep1}}"  responsiveWidthStep2="{{responsiveWidthStep2}}">
+
+			<div vertical layout drawer>
+
+			<content select="[navigation], nav"></content>
+
+			</div>
+			<div main>
+			<div id="divContainerNarrowSearch">
+			</div>
+				<content select="*"></content>
+			</div>
+		</trutek-tri-drawer-panel>
+		
+    </core-header-panel>
+	
+
+
+</template>
+<script>
+
+  Polymer('trutek-header-panel-drawer', {
+    /**
+     * When the browser window size is smaller than the `responsiveWidth`, 
+     * `core-drawer-panel` changes to a narrow layout. In narrow layout, 
+     * the drawer will be stacked on top of the main panel.
+     *
+     * @attribute responsiveWidth
+     * @type string
+     */    
+    responsiveWidth: '1000px',
+	responsiveWidthStep1:'1050px',
+	responsiveWidthStep2:'650px',
+
+    /**
+     * Used to control the header and scrolling behaviour of `core-header-panel`
+     *
+     * @attribute mode
+     * @type string
+     */     
+    mode: 'seamed',
+
+    /**
+      * Toggle the drawer panel
+      * @method togglePanel
+      */    
+    togglePanel: function() {
+      this.$.drawerPanel.togglePanel();
+    },
+
+    /**
+      * Open the drawer panel
+      * @method openDrawer
+      */      
+    openDrawer: function() {
+      this.$.drawerPanel.openDrawer();
+    },
+
+    /**
+      * Close the drawer panel
+      * @method closeDrawer
+      */     
+    closeDrawer: function() {
+      this.$.drawerPanel.closeDrawer();
+    },
+	domReady: function() {
+      // to avoid transition at the beginning e.g. page loads
+      // NOTE: domReady is already raf delayed and delaying another frame
+      // ensures a layout has occurred.
+      this.async(function() {
+        this.transition = true;
+      });
+	  
+    },
+	
+	toggleSearchPanel: function() {
+      
+	  if(this.$.siteSearchNarrow.dataset.toggle!="on"){
+		this.$.siteSearchNarrow.dataset.toggle="on";
+		this.$.divContainerNarrowSearch.style.height="40px";
+		this.$.divContainerNarrowSearch.paddingTop="10px";
+	  }
+	  else{
+		this.$.siteSearchNarrow.dataset.toggle="off";
+		this.$.divContainerNarrowSearch.style.height="0px";
+		this.$.divContainerNarrowSearch.paddingTop="0px";
+		
+	  }
+	  
+    },
+
+    queryMatchesStep2Changed: function() {
+      if (this.queryMatchesStep2) {
+        this.$.divFullSearch.style.display="none";
+		this.$.siteSearchNarrow.style.display="block";
+		this.$.divContainerNarrowSearch.innerHTML=this.$.divFullSearch.innerHTML;
+		
+      }
+	  else{
+		this.$.siteSearchNarrow.dataset.toggle="off";
+		this.$.divFullSearch.style.display="block";
+		this.$.divContainerNarrowSearch.style.height="0px";
+		this.$.siteSearchNarrow.style.display="none";
+		this.$.divContainerNarrowSearch.innerHTML="";
+		this.$.divContainerNarrowSearch.paddingTop="0px";
+	  }
+    }
+    
+  });
+
+</script>
+</polymer-element>
