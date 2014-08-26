@@ -1,0 +1,33 @@
+{
+  "name": "trutek-header-panel-drawer",
+  "version": "0.0.0",
+  "authors":[{"name":"Ron Truex", "email":"ron@trutekinnovations.com"}],
+  "description": "Expanded the core drawer panel to have 2 responsive points.",
+  "main": "bower_components/trutek-header-panel-drawer/trutek-header-panel-drawer.html",
+  "keywords": [
+    "polymer"
+  ],
+  "license": "BSD",
+  "homepage": "https://github.com/tikicoder/trutek-header-panel-drawer",
+  "repository": {
+  "type": "git",
+  "url": "git://github.com/tikicoder/trutek-header-panel-drawer.git"
+},
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "core-selector": "Polymer/core-selector#>=0.3.0 <1.0.0",
+    "core-media-query": "Polymer/core-media-query#>=0.3.0 <1.0.0",
+	"core-header-panel": "Polymer/core-header-panel#>=0.3.0 <1.0.0",
+	"core-header-panel": "Polymer/core-header-panel#>=0.3.0 <1.0.0",
+	"core-toolbar": "Polymer/core-toolbar#>=0.3.0 <1.0.0",
+	"core-dropdown": "Polymer/core-dropdown#>=0.3.0 <1.0.0",
+	"core-input": "Polymer/core-input#>=0.3.0 <1.0.0",
+	"paper-icon-button": "Polymer/paper-icon-button#>=0.3.0 <1.0.0"
+  }
+}
