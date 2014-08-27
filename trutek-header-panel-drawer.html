@@ -147,14 +147,12 @@ This code may only be used under the BSD style license included in the project.
 			<content select="[tool]"></content>
 			<paper-icon-button id="menuButton" icon="menu" on-tap="{{togglePanel}}"></paper-icon-button>
 			<div id="divFullSearch" style="white-space:no-wrap;"><div style="float:left;padding-top:5px;"><core-input id="searchInput" placeholder="Enter City,State or Zip" type="search"></core-input>
-			<core-dropdown id="searchInputCategory" selected="Bars &amp; Clubs" valueattr="label">
-    <core-item label="Bars &amp; Clubs" class="searchInputCategoryItem"></core-item>
-    <core-item label="Happy Hour" class="searchInputCategoryItem"></core-item>
-    <core-item label="Drink Specials" class="searchInputCategoryItem"></core-item>
-    <core-item label="Ladies Nights" class="searchInputCategoryItem"></core-item>
-	<core-item label="Music &amp; Dance" class="searchInputCategoryItem"></core-item>
-	<core-item label="Wine &amp; Dine" class="searchInputCategoryItem"></core-item>
-	<core-item label="Adult Playgrounds" class="searchInputCategoryItem"></core-item>
+			<core-dropdown id="searchInputCategory" selected="Select Category" valueattr="label">
+    <core-item label="Select Category" class="searchInputCategoryItem"></core-item>
+    <core-item label="Clothing" class="searchInputCategoryItem"></core-item>
+    <core-item label="Electronics" class="searchInputCategoryItem"></core-item>
+    <core-item label="Shoes" class="searchInputCategoryItem"></core-item>
+	<core-item label="Sports" class="searchInputCategoryItem"></core-item>
 </core-dropdown>
 </div>
 			<paper-icon-button id="siteSearch" icon="search" on-tap="{{togglePanel}}" ></paper-icon-button>
