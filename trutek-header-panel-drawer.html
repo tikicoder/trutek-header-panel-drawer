@@ -20,7 +20,10 @@ This code may only be used under the BSD style license included in the project.
     :host {
       display: block;
     }
-    
+    [userlogin] {
+		display:none;
+	}
+	
     [drawer] {
       background-color: #fff;
       box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
@@ -57,10 +60,10 @@ This code may only be used under the BSD style license included in the project.
 		background-color:#ffffff;
 		color:#000000;
 		border-radius: 30px;
-		margin-left:-8px;
 		display:none;
+		transition: -webkit-transform ease-in-out 0.3s, margin-left ease-in-out 0.3s;
+		transition: transform ease-in-out 0.3s, margin-left ease-in-out 0.3s;
 	}
-	
 	#siteSearchNarrow::shadow core-icon{
 	height:15px;
 	width:15px;
@@ -87,15 +90,36 @@ This code may only be used under the BSD style license included in the project.
 	}
 	
 	#divContainerNarrowSearch {
-		height:0px;
-		overflow:hidden;
-		position:absolute;top:0px;left:0px;background-color:#304ffe;width:100%;font-size:1.3em;padding-left:30px;
+		position:absolute;top:0px;left:0px;
+		background-color:#304ffe;
+		width:100%;
+		font-size:1.3em;
+		padding-left:10px;
 		padding-top:0px;
 		transition: -webkit-transform ease-in-out 0.3s, height ease-in-out 0.3s;
 		transition: transform ease-in-out 0.3s, height ease-in-out 0.3s;
 	}
-
+	.divContainerNarrowSearchClosed{
+		height:0px;
+		overflow:hidden;		
+	}
+	.divContainerNarrowSearchOpen{
+		height:40px;
+	}
+	
 	#searchInput{
+		background-color:#FFFFFF;
+		font-size:.6em;
+		padding-top:5px;
+		padding-bottom:5px;
+		padding-left:5px;
+		border-top-left-radius: 30px;
+		border-bottom-left-radius: 30px;
+		width:200px;
+		float:left;
+	}
+		
+	#searchInputNarrow{
 		background-color:#FFFFFF;
 		font-size:.6em;
 		padding-top:5px;
@@ -117,6 +141,20 @@ This code may only be used under the BSD style license included in the project.
 		float:left;
     }
 	#searchInputCategory::shadow div core-item {
+    min-height: 5px !important;
+}
+	#searchInputCategoryNarrow {
+		background-color: #FFFFFF;
+		color:#cccccc;
+		font-size:.6em;
+		min-height: 6px;
+		margin-left: -6px;
+		border-left: solid 1px #Cccccc;
+		float:left;
+		border-top-right-radius: 30px;
+		border-bottom-right-radius: 30px;
+    }
+	#searchInputCategoryNarrow::shadow div core-item {
     min-height: 5px !important;
 }
 	
@@ -152,6 +190,10 @@ This code may only be used under the BSD style license included in the project.
 		width:335px;
 	}
 	
+	div.divFullSearchOpening{
+		width:335px;
+		overflow:hidden;
+	}
 	div.divFullSearchOpen{
 		width:335px;
 	}
@@ -297,7 +339,10 @@ This code may only be used under the BSD style license included in the project.
 	
   }
 }
-    
+
+	#headerUserInfo{
+	margin-left:auto;margin-right:10px;
+	}
   </style>
   
   <core-media-query query="max-width: {{responsiveWidthStep2 }}" queryMatches="{{queryMatchesStep2}}"></core-media-query>
@@ -321,12 +366,13 @@ This code may only be used under the BSD style license included in the project.
 				</div>
 			</div>
 			</template>
-			<paper-icon-button id="siteSearchNarrow" data-toggle="off" icon="search" on-tap="" ></paper-icon-button>
+			<paper-icon-button id="siteSearchNarrow" data-toggle="off" icon="search" on-tap="{{siteSearchNarrowToggle}}" ></paper-icon-button>
 			<template if="{{showHeaderFilter}}">
 				<paper-icon-button id="menuFilterSearch" icon="filter" on-tap="" label="Filter"></paper-icon-button>
 			</template>
-			
+			<div id="headerUserInfo">
 			<content select="[userlogin]"></content>
+			</div>
 		</core-toolbar>
       
 		<trutek-tri-drawer-panel id="drawerPanel" narrow="{{narrow}}"  responsiveWidth="{{responsiveWidth}}"  responsiveWidthStep1="{{responsiveWidthStep1}}"  responsiveWidthStep2="{{responsiveWidthStep2}}">
@@ -337,7 +383,14 @@ This code may only be used under the BSD style license included in the project.
 
 			</div>
 			<div main>
-			<div id="divContainerNarrowSearch">
+			<div id="divContainerNarrowSearch" class="divContainerNarrowSearchClosed">
+			<div style="float:left;padding-top:5px;"><core-input id="searchInputNarrow" placeholder="{{headerSearchPlaceHolder}}" type="search"></core-input>
+					<core-dropdown id="searchInputCategoryNarrow" selected="Clothing" valueattr="label">
+					<core-item label="Clothing" class="searchInputCategoryItem"></core-item>
+					<core-item label="Outdoors" class="searchInputCategoryItem"></core-item>
+					<core-item label="Sports" class="searchInputCategoryItem"></core-item>
+				</core-dropdown>
+				</div>
 			</div>
 				<content select="*"></content>
 			</div>
@@ -366,6 +419,7 @@ This code may only be used under the BSD style license included in the project.
 	showHeaderSearch:true,
 	showHeaderFilter:true,
 	headerSearchPlaceHolder:"Search...",
+	headerPanelNarrow: {value: false, reflect: true},
 
     /**
      * Used to control the header and scrolling behaviour of `core-header-panel`
@@ -410,47 +464,66 @@ This code may only be used under the BSD style license included in the project.
     },
 	
 	toggleSearchPanel: function() {
-      
-	  if(this.$.siteSearchHeader.dataset.state!="open"){
-		this.$.divFullSearch.className="divFullSearchOpen";
-		this.$.siteSearchHeader.dataset.state="open";	
-		this.$.siteSearchHeader.className="siteSearchHeaderSearch";
+	
+      if(!this.headerPanelNarrow){
+		if(this.$.siteSearchHeader.dataset.state!="open"){
+			this.$.divFullSearch.className="divFullSearchOpening";
+			this.$.siteSearchHeader.dataset.state="open";	
+			this.$.siteSearchHeader.className="siteSearchHeaderSearch";
+		  }
+		  else{
+			this.$.divFullSearch.className="divFullSearchClosed";
+			this.$.siteSearchHeader.dataset.state="closed";
+			this.$.siteSearchHeader.className="siteSearchHeaderSearchArrow";
+		  }
 	  }
 	  else{
-		this.$.divFullSearch.className="divFullSearchClosed";
-		this.$.siteSearchHeader.dataset.state="closed";
-		this.$.siteSearchHeader.className="siteSearchHeaderSearchArrow";
+		if(this.$.siteSearchHeader.dataset.state!="open"){
+			this.$.siteSearchHeader.dataset.state="open";
+			this.$.siteSearchHeader.className="siteSearchHeaderSearch";
+			this.$.divContainerNarrowSearch.className="divContainerNarrowSearchOpen";
+			this.$.siteSearchNarrow.style.display="block";
+			this.$.siteSearchNarrow.style.marginLeft="0px";
+		}
+		else{
+			this.$.siteSearchHeader.dataset.state="closed";
+			this.$.siteSearchHeader.className="siteSearchHeaderSearchArrow";
+			this.$.divContainerNarrowSearch.className="divContainerNarrowSearchClosed";
+			this.$.siteSearchNarrow.style.marginLeft="-45px";
+			
+		}
 	  }
 	  
 	  this.fire('change');
 	  	  
     },
-
+	
     queryMatchesStep2Changed: function() {
-      if (this.queryMatchesStep2) {
-        this.$.divFullSearch.style.display="none";
-		this.$.siteSearchHeader.style.display="none";
-		this.$.siteSearchNarrow.style.display="block";
-		this.$.divContainerNarrowSearch.innerHTML=this.$.divFullSearch.innerHTML;
+
+		if(this.$.siteSearchHeader.dataset.state!="closed"){
+			this.toggleSearchPanel();
+		}
 		
-      }
-	  else{
-		this.$.siteSearchNarrow.dataset.toggle="off";
-		this.$.divFullSearch.style.display="block";
-		this.$.siteSearchHeader.style.display="block";
-		this.$.divContainerNarrowSearch.style.height="0px";
-		this.$.siteSearchNarrow.style.display="none";
-		this.$.divContainerNarrowSearch.innerHTML="";
-		this.$.divContainerNarrowSearch.paddingTop="0px";
-	  }
+		this.headerPanelNarrow=this.queryMatchesStep2;
+		
+		if(this.headerPanelNarrow)
+			this.$.headerUserInfo.style.display="none";
+		else
+			this.$.headerUserInfo.style.display="block";
+
+	  
     },
 	siteSearchHeaderAnimationEnd:function(){
 		this.$.siteSearchHeader.className="";
 		if(this.$.siteSearchHeader.dataset.state=="open"){
 			this.$.siteSearchHeader.icon="arrow-back";
+			if(!this.headerPanelNarrow){
+				this.$.divFullSearch.className="divFullSearchOpen";
+			}
 		}
 		else{
 			this.$.siteSearchHeader.icon="search";
+			this.$.siteSearchNarrow.style.display="none";
 		}
 
 	}
