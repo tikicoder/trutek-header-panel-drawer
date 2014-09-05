@@ -1,0 +1,334 @@
+:host {
+      display: block;
+    }
+    [userlogin] {
+		display:none;
+	}
+	
+    [drawer] {
+      background-color: #fafafa;
+      box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
+    }
+    
+    [wrapper] {
+      height: 100%;
+      background-color: #000;
+    }
+	
+	[main] {
+      height: 100%;
+      background-color: #fafafa;
+    }
+    
+    [mainHeader] {
+      background-color: #304ffe;
+      color: #fafafa;
+    }
+	
+	#siteSearch{
+		background-color:#fafafa;
+		color:#000000;
+		border-radius: 30px;
+		margin-left:-8px;
+		margin-top:1px;
+	}
+	
+	#siteSearch::shadow core-icon{
+	height:15px;
+	width:15px;
+	}
+	
+	#siteSearchGPS{
+		color:#fafafa;
+		border-radius: 30px;
+		margin-left:-8px;
+		float:right;
+	}
+	
+	#siteSearchGPS::shadow core-icon{
+	height:15px;
+	width:15px;
+	}
+	
+	#siteSearchGPS::shadow span{
+		font-size: 0.4em;
+		display: block;
+		margin: -11px 0px 6px 0px;
+		padding-left: 7px;
+		padding-right: 7px;
+		color:#fafafa;
+		font-weight:bold;
+	}
+	
+	#siteSearchGPSNarrow{
+		color:#fafafa;
+		border-radius: 30px;
+		margin-left:-8px;
+		float:right;
+		display:none;
+	}
+	
+	#siteSearchGPSNarrow::shadow core-icon{
+	height:15px;
+	width:15px;
+	}
+	
+	#siteSearchGPSNarrow::shadow span{
+		font-size: 0.4em;
+		display: block;
+		margin: -11px 0px 6px 0px;
+		padding-left: 7px;
+		padding-right: 7px;
+		color:#fafafa;
+		font-weight:bold;
+	}
+	
+	#siteSearchNarrow{
+		background-color:#fafafa;
+		color:#000000;
+		border-radius: 30px;
+		display:none;
+		transition: -webkit-transform ease-in-out 0.3s, margin-left ease-in-out 0.3s;
+		transition: transform ease-in-out 0.3s, margin-left ease-in-out 0.3s;
+		-webkit-transform: translate3d(-50%, 0, 0);
+		transform: translate3d(-50%, 0, 0);
+	}
+	#siteSearchNarrow::shadow core-icon{
+	height:15px;
+	width:15px;
+	}
+	
+	#menuFilterSearch{
+		color:#fafafa;
+		font-weight:bold;
+		border-radius: 30px;
+		margin-left:-7px;
+	}
+	
+	#menuFilterSearch::shadow core-icon{
+	height:15px;
+	width:15px;
+		margin-top: 2px;
+	}
+	
+	#menuFilterSearch::shadow span{
+		font-size: 0.4em;
+		display: block;
+		margin: -11px 0px 6px 0px;
+		padding-left: 7px;
+		padding-right: 7px;
+		color:#fafafa;
+		font-weight:bold;
+	}
+	
+	#divContainerNarrowSearch {
+		position:absolute;top:0px;left:0px;
+		background-color:#304ffe;
+		width:100%;
+		font-size:1.3em;
+		padding-left:10px;
+		padding-top:0px;
+		transition: -webkit-transform ease-in-out 0.3s, height ease-in-out 0.3s;
+		transition: transform ease-in-out 0.3s, height ease-in-out 0.3s;
+	}
+	.divContainerNarrowSearchClosed{
+		height:0px;
+		overflow:hidden;		
+	}
+	.divContainerNarrowSearchOpen{
+		height:40px;
+	}
+	
+	#searchInput{
+		background-color:#fafafa;
+		font-size:.6em;
+		padding-top:5px;
+		padding-bottom:5px;
+		padding-left:5px;
+		border-top-left-radius: 30px;
+		border-bottom-left-radius: 30px;
+		width:200px;
+		float:left;
+	}
+		
+	#searchInputNarrow{
+		background-color:#fafafa;
+		font-size:.6em;
+		padding-top:5px;
+		padding-bottom:5px;
+		padding-left:5px;
+		border-top-left-radius: 30px;
+		border-bottom-left-radius: 30px;
+		width:200px;
+		float:left;
+	}
+	
+	 #searchInputCategory {
+		background-color: #fafafa;
+		color:#cccccc;
+		font-size:.6em;
+		min-height: 25px;
+		margin-left: -2px;
+		border-left: solid 1px #Cccccc;
+		float:left;
+    }
+	#searchInputCategory::shadow div core-item {
+    min-height: 5px !important;
+}
+	#searchInputCategoryNarrow {
+		background-color: #fafafa;
+		color:#cccccc;
+		font-size:.6em;
+		min-height: 25px;
+		margin-left: -2px;
+		border-left: solid 1px #Cccccc;
+		float:left;
+		border-top-right-radius: 30px;
+		border-bottom-right-radius: 30px;
+    }
+	#searchInputCategoryNarrow::shadow div core-item {
+    min-height: 5px !important;
+}
+	
+	.searchInputCategoryItem.core-selected{
+		min-height: 5px;
+		padding-top:5px;
+		padding-bottom:5px;
+		padding-left:5px;
+	}
+	
+	.searchInputCategoryItem:not(.core-selected){
+		color:#CCCCCC;
+		min-height: 5px;
+		padding-top:5px;
+		padding-bottom:5px;
+	}
+	.searchInputCategoryItem:not(.core-selected):hover{
+		color:#333333;
+		cursor:pointer;
+	}
+	
+	#divFullSearch{
+		white-space:nowrap;	
+		margin-left: -5px;		
+		transition: -webkit-transform ease-in-out 0.3s, width ease-in-out 0.3s;
+		transition: transform ease-in-out 0.3s, width ease-in-out 0.3s;
+	}
+	
+	div.divFullSearchClosed{
+		width:0px;
+		overflow:hidden;
+	}
+	#divFullSearch > div{
+		width:365px;
+	}
+	
+	div.divFullSearchOpening{
+		width:365px;
+		overflow:hidden;
+	}
+	div.divFullSearchOpen{
+		width:365px;
+	}
+	
+@-webkit-keyframes rotateObjectClockWise {
+  12% {
+    -webkit-transform: rotate(45deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+  38% {
+    -webkit-transform: rotate(135deg);
+	
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+	
+  }
+  62% {
+    -webkit-transform: rotate(225deg);
+	
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+	
+  }
+  88% {
+    -webkit-transform: rotate(315deg);
+	
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+	
+  }
+}
+
+@keyframes rotateObjectClockWise {
+  12% {
+    transform: rotate(45deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  38% {
+    transform: rotate(135deg);
+	
+  }
+  50% {
+    transform: rotate(180deg);
+	
+  }
+  62% {
+    transform: rotate(225deg);
+	
+  }
+  75% {
+    transform: rotate(270deg);
+	
+  }
+  88% {
+    transform: rotate(315deg);
+	
+  }
+  100% {
+    transform: rotate(360deg);
+	
+  }
+}
+
+
+.styleRotateObjectClockWise{
+  -webkit-animation: rotateObjectClockWise 0.3s ease-out forwards;
+  animation: rotateObjectClockWise 0.3s ease-out forwards;
+}
+
+
+	#headerUserInfo{
+	margin-left:auto;margin-right:10px;
+	}
+	
+	#divAdvanceSearchFilter {
+		height:100%;width:256px;position:absolute;background-color:#fafafa;top:0px;
+		transition: -webkit-transform ease-in-out 0.3s, left ease-in-out 5s;
+		transition: transform ease-in-out 0.3s, left ease-in-out 5s;
+		z-index:10;
+	}
+	div.divAdvanceSearchFilterClosed{
+		-webkit-transform: translate3d(-100%, 0, 0);
+		transform: translate3d(-100%, 0, 0);
+	}
+	
+	paper-checkbox {
+      padding: 0px 0px 0px 0px;
+	  font-size:.6em;
+	  zoom:75%;
+    }
+
+    paper-checkbox.blue::shadow #ink[checked] {
+      color: #4285f4;
+    }
+    
+    paper-checkbox.blue::shadow #checkbox.checked {
+      border-color: #4285f4;
+    }
