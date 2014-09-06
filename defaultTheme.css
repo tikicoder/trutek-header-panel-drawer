@@ -1,0 +1,81 @@
+[main],
+[drawer]{
+	background-color: #fafafa;
+}
+
+paper-icon-button.siteSearchGPSNarrowOn,
+paper-icon-button.siteSearchGPSOn{
+	background-color:#fafafa !important;
+	color:#304ffe !important;
+}
+
+paper-icon-button.siteSearchGPSNarrowOn span,
+paper-icon-button.siteSearchGPSOn span{
+	color:#304ffe !important;
+}
+
+paper-icon-button.siteSearchGPSNarrowOn::shadow span,
+paper-icon-button.siteSearchGPSOn::shadow span{
+	color:#304ffe !important;
+}
+
+#searchInputCategory ,
+#siteSearchNarrow,
+#siteSearch,
+#searchInput,
+#searchInputNarrow,
+#searchInputCategoryNarrow ,
+#divAdvanceSearchFilter{
+      background-color: #fafafa;
+    }
+
+[mainHeader] {
+	 background-color: #304ffe;
+}	
+#divContainerNarrowSearch {
+	 background-color: #304ffe;
+}	
+
+[drawer] {
+      box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
+    }
+	
+#searchInputNarrow > input,
+#siteSearchNarrow,	
+#siteSearch{
+		color:#212121;
+}
+#searchInputNarrow::shadow  > input,
+#menuFilterSearch::shadow span,
+#siteSearchGPSNarrow::shadow span,
+#siteSearchGPS::shadow span{
+		color:#fafafa;
+}
+[mainHeader] {
+		color:#fafafa;
+}
+
+#menuFilterSearch span,
+#menuFilterSearch,
+#siteSearchGPSNarrow span
+#siteSearchGPS  span,
+#siteSearchGPSNarrow,
+#siteSearchGPS {
+		color:#fafafa;
+}
+
+
+.searchInputCategoryItem:not(.core-selected),
+.searchInputCategoryItem:not(.core-selected):hover{
+		color:#cccccc;
+}
+
+#searchInputCategoryNarrow,
+#searchInputCategory {
+		color:#cccccc;
+}
+
+#searchInputCategoryNarrow,
+#searchInputCategory {
+	border-left: solid 1px #cccccc;
+}
