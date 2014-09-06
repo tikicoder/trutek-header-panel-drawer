@@ -94,6 +94,13 @@
 		margin-left:-7px;
 	}
 	
+	#menuFilterSearch::shadow core-icon svg{
+		top: -3px;
+	}
+	#menuFilterSearch core-icon svg{
+		top: -3px;
+	}
+	
 	#menuFilterSearch::shadow span{
 		font-size: 0.4em;
 		display: block;
