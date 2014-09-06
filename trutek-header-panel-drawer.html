@@ -36,8 +36,8 @@ This code may only be used under the BSD style license included in the project.
 					<core-item label="Sports" class="searchInputCategoryItem"></core-item>
 				</core-dropdown>
 				</div>
-				<paper-icon-button id="siteSearch" icon="search" on-tap="{{processHeaderSearch}}" ></paper-icon-button>
 				<paper-icon-button id="siteSearchGPS" data-toggle="off" icon="file-map"  label="GPS" on-tap="{{toggleHeaderGPSSearchPanel}}" ></paper-icon-button>
+				<paper-icon-button id="siteSearch" icon="search" on-tap="{{processHeaderSearch}}" ></paper-icon-button>
 				</div>
 			</div>
 				<paper-icon-button id="siteSearchNarrow" data-toggle="off" icon="search" on-tap="{{processHeaderSearch}}" ></paper-icon-button>
@@ -100,7 +100,7 @@ This code may only be used under the BSD style license included in the project.
 	headerSearchPlaceHolder:"Search...",
 	headerPanelNarrow: {value: false, reflect: true},
 	customSearchHandler:null,
-	loadHeaderStyle:null,
+	loadHeaderStyle:"defaultTheme.css",
 
     /**
      * Used to control the header and scrolling behaviour of `core-header-panel`
@@ -153,14 +153,14 @@ This code may only be used under the BSD style license included in the project.
 
 		if(this.$.siteSearchGPS.dataset.toggle!="on"){
 			this.$.siteSearchGPS.dataset.toggle="on";
-			this.$.siteSearchGPS.style.backgroundColor="#fafafa";
-			this.$.siteSearchGPSNarrow.style.backgroundColor="#fafafa";
+			this.$.siteSearchGPS.className="siteSearchGPSOn";
+			this.$.siteSearchGPSNarrow.className="siteSearchGPSOn";
 
 		}
 		else{
 			this.$.siteSearchGPS.dataset.toggle="off";
-			this.$.siteSearchGPS.style.backgroundColor="transparent";
-			this.$.siteSearchGPSNarrow.style.backgroundColor="transparent";
+			this.$.siteSearchGPS.className="";
+			this.$.siteSearchGPSNarrow.className="";
 		}
     },
 	headerToggleNavClear: function() {
